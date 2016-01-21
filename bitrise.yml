@@ -1,0 +1,34 @@
+format_version: 1.1.0
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+
+app:
+  envs:
+  - BITRISE_BUILD_NUMBER: "43"
+  # define these in your .bitrise.secrets.yml
+  - my_manifest_path:
+  - my_version_name: "1.0.43"
+
+workflows:
+  test:
+    steps:
+    - script:
+        title: Switch working dir to test/_tmp dir
+        description: |-
+          To prevent step testing issues, like referencing relative
+          files with just './some-file', which would work for local tests
+          but not if the step is included in another bitrise.yml!
+        inputs:
+        - content: |-
+            #!/bin/bash
+            set -e
+            test_workdir_pth="$(pwd)/_tmp"
+            echo " * test_workdir_pth: ${test_workdir_pth}"
+            set -v
+            mkdir -p "${test_workdir_pth}"
+            envman add --key BITRISE_SOURCE_DIR --value "${test_workdir_pth}"
+    - path::./:
+        run_if: true
+        inputs:
+        - manifest_path: ${my_manifest_path}
+        - version_code: ${BITRISE_BUILD_NUMBER}
+        - version_name: ${my_version_name}

@@ -1,0 +1,41 @@
+title: Set Android Manifest Version Code and Name
+summary: |-
+  Sets the Android Manifest Version Code and Name to the specified value, in the target AndroidManifest.xml file for the next build.
+description: |-
+  Sets the Android Manifest Version Code and Name to the specified value, in the target AndroidManifest.xml file for the next build.
+website: https://github.com/jamesmontemagno/steps-set-android-manifest-versions
+source_code_url: https://github.com/jamesmontemagno/steps-set-android-manifest-versions
+support_url: https://github.com/jamesmontemagno/steps-set-android-manifest-versions/issues
+host_os_tags:
+  - "osx-10.10"
+project_type_tags: []
+type_tags:
+  - android
+is_requires_admin_user: false
+is_always_run: false
+is_skippable: false
+run_if: ".IsCI"
+inputs:
+  - manifest_file:
+    opts:
+      title: "AndroidManifest.xml file path"
+      summary: ""
+      description: |
+        Path to the given project's AndroidManifest.xml file.
+      is_required: true
+      is_expand: true
+      is_dont_change_value: false
+  - version_code: "$BITRISE_BUILD_NUMBER"
+    opts:
+      title: "Version Code"
+      summary: "Set the android:versionCode to a specified value. Should be integer type."
+      is_required: true
+      is_expand: true
+      is_dont_change_value: false
+  - version_name: "1.0.$BITRISE_BUILD_NUMBER"
+    opts:
+      title: "Version Name"
+      summary: "Set the android:versionCode to a specified value that is usually display. For example: 1.0.5"
+      is_required: true
+      is_expand: true
+      is_dont_change_value: false
