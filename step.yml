@@ -30,5 +30,5 @@ inputs:
   - version_name: "1.0.$BITRISE_BUILD_NUMBER"
     opts:
       title: "Version Name"
-      summary: "Set the android:versionCode to a specified value that is usually display. For example: 1.0.5"
+      summary: "Set the android:versionName to a specified value that is usually display. For example: 1.0.5"
       is_required: true
