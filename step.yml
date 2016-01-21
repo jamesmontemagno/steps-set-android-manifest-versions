@@ -6,6 +6,8 @@ description: |-
 website: https://github.com/jamesmontemagno/steps-set-android-manifest-versions
 source_code_url: https://github.com/jamesmontemagno/steps-set-android-manifest-versions
 support_url: https://github.com/jamesmontemagno/steps-set-android-manifest-versions/issues
+source:
+  git: https://github.com/jamesmontemagno/steps-set-android-manifest-versions.git
 host_os_tags:
   - "osx-10.10"
 project_type_tags:
