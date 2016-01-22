@@ -31,19 +31,38 @@ echo " (i) Provided Android Manifest path: ${manifest_file}"
 echo " (i) Verson Code: ${version_code}"
 echo " (i) Version Name: ${version_name}"
 
+
+VERSIONCODE=`grep versionCode ${manifest_file} | sed 's/.*versionCode="//;s/".*//'`
+VERSIONNAME=`grep versionName ${manifest_file} | sed -e 's/.*versionName\s*=\s*\"\([0-9.]*\)\".*/\1/g'`
+
+if [ -z "${VERSIONCODE}" ] ; then
+  echo " [!] Could not find current Version Code!"
+  exit 1
+fi
+
+echo "FOUND this version name ${VERSIONCODE}"
+
+if [ -z "${VERSIONNAME}" ] ; then
+  echo " [!] Could not find current Version Name!"
+  exit 1
+fi
+echo "Found this version name ${VERSIONNAME}"
+
+
 # ---------------------
 # --- Main:
 
 # verbose / debug print commands
+
 set -v
+# ---- Set Build Version Code:
+
+sed -i.bak "s/android:versionCode="\"${VERSIONCODE}\""/android:versionCode="\"${version_code}\""/" ${manifest_file}
 
 # ---- Set Build Version Code:
 
-sed -i.bak "s/android:versionCode=\".*\"/android:versionCode=\"${version_code}\"/g" ${manifest_file}
+sed -i.bak "s/android:versionName="\"${VERSIONNAME}\""/android:versionName="\"${version_name}\""/" ${manifest_file}
 
-# ---- Set Build Version Code:
-
-sed -i.bak "s/android:versionName=\".*\"/android:versionName=\"${version_name}\"/g" ${manifest_file}
 
 # ---- Remove backup:
 
