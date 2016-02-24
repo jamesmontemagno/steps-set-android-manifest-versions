@@ -33,20 +33,20 @@ echo " (i) Version Name: ${version_name}"
 
 
 VERSIONCODE=`grep versionCode ${manifest_file} | sed 's/.*versionCode="//;s/".*//'`
-VERSIONNAME=`grep versionName ${manifest_file} | sed -e 's/.*versionName\s*=\s*\"\([0-9.]*\)\".*/\1/g'`
+VERSIONNAME=`grep versionName ${manifest_file} | sed 's/.*versionName\s*=\s*\"\([^\"]*\)\".*/\1/g'`
 
 if [ -z "${VERSIONCODE}" ] ; then
   echo " [!] Could not find current Version Code!"
   exit 1
 fi
 
-echo "FOUND this version name ${VERSIONCODE}"
+echo "Version code detected: ${VERSIONCODE}"
 
 if [ -z "${VERSIONNAME}" ] ; then
   echo " [!] Could not find current Version Name!"
   exit 1
 fi
-echo "Found this version name ${VERSIONNAME}"
+echo "Version name detected: ${VERSIONNAME}"
 
 
 # ---------------------
