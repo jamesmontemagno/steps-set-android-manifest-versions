@@ -29,7 +29,7 @@ inputs:
       title: "Version Code"
       summary: "Set the android:versionCode to a specified value. Should be integer type."
       is_required: true
-  - version_name: "1.0.$BITRISE_BUILD_NUMBER"
+  - version_name: 
     opts:
       title: "Version Name"
       summary: "Set the android:versionName to a specified value that is usually display. For example: 1.0.5"
