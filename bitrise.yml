@@ -3,6 +3,7 @@ default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 
 app:
   envs:
+  - version_code_offset: $my_version_code_offset
   - BITRISE_BUILD_NUMBER: "43"
   # define these in your .bitrise.secrets.yml
   - my_manifest_path: $my_manifest_path
@@ -25,9 +26,10 @@ workflows:
     - path::./:
         run_if: true
         inputs:
-        - manifest_path: ${my_manifest_path}
+        - manifest_file: ${my_manifest_path}
         - version_code: ${BITRISE_BUILD_NUMBER}
         - version_name: ${my_version_name}
+        - version_code_offset: ${my_version_code_offset}
  
   # ----------------------------------------------------------------
   # --- workflows to Share this step into a Step Library
