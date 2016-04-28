@@ -29,6 +29,11 @@ inputs:
       title: "Version Code"
       summary: "Set the android:versionCode to a specified value. Should be integer type."
       is_required: true
+  - version_code_offset:
+    opts:
+      title: "Version Code Offset"
+      description: |
+        This offset will be added to `version code` input's value.
   - version_name: 
     opts:
       title: "Version Name"

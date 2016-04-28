@@ -37,6 +37,16 @@ if [ -z "${VERSIONCODE}" ] ; then
 fi
 
 echo "Version code detected: ${VERSIONCODE}"
+if [ ! -z "${version_code_offset}" ] ; then
+  echo " (i) Version code offset: ${version_code_offset}"
+
+  CONFIG_new_version_code=$((${VERSIONCODE} + ${version_code_offset}))
+
+  echo " (i) Version code: ${CONFIG_new_version_code}"
+else
+  echo " (i) Version code: ${CONFIG_new_version_code}"
+fi
+
 
 if [ -z "${VERSIONNAME}" ] ; then
   echo " [!] Could not find current Version Name!"
@@ -53,7 +63,7 @@ echo "Version name detected: ${VERSIONNAME}"
 set -v
 # ---- Set Build Version Code:
 
-sed -i.bak "s/android:versionCode="\"${VERSIONCODE}\""/android:versionCode="\"${version_code}\""/" ${manifest_file}
+sed -i.bak "s/android:versionCode="\"${VERSIONCODE}\""/android:versionCode="\"${CONFIG_new_version_code}\""/" ${manifest_file}
 
 # ---- Set Build Version Code if it was specified:
 if ! [ -z "${version_name}" ] ; then
