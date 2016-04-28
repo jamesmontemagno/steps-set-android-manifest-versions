@@ -38,7 +38,7 @@ workflows:
       # if you want to share this step into a StepLib
       - MY_STEPLIB_REPO_FORK_GIT_URL: https://github.com/jamesmontemagno/bitrise-steplib
       - STEP_ID_IN_STEPLIB: set-android-manifest-versions
-      - STEP_GIT_VERION_TAG_TO_SHARE: 1.0.3
+      - STEP_GIT_VERION_TAG_TO_SHARE: 1.0.4
       - STEP_GIT_CLONE_URL: https://github.com/jamesmontemagno/steps-set-android-manifest-versions.git
     description: |-
       If this is the first time you try to share a Step you should
