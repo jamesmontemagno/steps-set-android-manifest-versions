@@ -40,12 +40,12 @@ echo "Version code detected: ${VERSIONCODE}"
 if [ ! -z "${version_code_offset}" ] ; then
   echo " (i) Version code offset: ${version_code_offset}"
 
-  CONFIG_new_version_code=$((${VERSIONCODE} + ${version_code_offset}))
-
-  echo " (i) Version code: ${CONFIG_new_version_code}"
+  CONFIG_new_version_code=$((${version_code} + ${version_code_offset}))
 else
-  echo " (i) Version code: ${CONFIG_new_version_code}"
+  CONFIG_new_version_code=${version_code}
 fi
+
+echo " (i) Version code: ${CONFIG_new_version_code}"
 
 
 if [ -z "${VERSIONNAME}" ] ; then
