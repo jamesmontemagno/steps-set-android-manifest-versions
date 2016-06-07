@@ -76,12 +76,12 @@ fi
 # ---- Set Build Version Code:
 
 sed -i.bak "s/android:versionCode="\"${VERSIONCODE}\""/android:versionCode="\"${CONFIG_new_version_code}\""/" ${manifest_file}
-envman add --key APP_BUILD --value "${VERSIONCODE}"
+envman add --key APP_BUILD --value "${CONFIG_new_version_code}"
 
 # ---- Set Build Version Code if it was specified:
 if ! [ -z "${version_name}" ] ; then
   sed -i.bak "s/android:versionName="\"${VERSIONNAME}\""/android:versionName="\"${version_name}\""/" ${manifest_file}
-  envman add --key APP_VERSION --value "${VERSIONNAME}"
+  envman add --key APP_VERSION --value "${version_name}"
 fi
 
 
