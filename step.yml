@@ -15,9 +15,10 @@ project_type_tags:
 type_tags:
   - build
   - utils
+  - versioning
 run_if: ".IsCI"
 inputs:
-  - manifest_file:
+  - manifest_file: "AndroidManifest.xml"
     opts:
       title: "AndroidManifest.xml file path"
       summary: ""
@@ -39,3 +40,18 @@ inputs:
       title: "Version Name"
       summary: "Set the android:versionName to a specified value that is usually display. For example: 1.0.5"
       is_required: true
+  - append_version_name: "no"
+    opts:
+      title: "Append Version Name"
+      summary: "It appends to the current Version Name. e.g. Current version name in manifest_file is '1.0'. After step will be '1.0.YOU_ENTERED_VERSION NAME'"
+      is_required: true
+      value_options:
+      - "true"
+      - "false"
+outputs:
+  - APP_VERSION:
+    opts:
+      title: Version (android:versionName from AndroidManifest.xml)
+  - APP_BUILD:
+    opts:
+      title: Build (android:versionCode from AndroidManifest.xml)
