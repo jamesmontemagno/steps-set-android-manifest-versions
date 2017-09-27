@@ -23,7 +23,7 @@ fi
 # --- Configs:
 
 echo " (i) Provided Android Manifest path: ${manifest_file}"
-echo " (i) Verson Code: ${version_code}"
+echo " (i) Version Code: ${version_code}"
 if ! [ -z "${version_name}" ] ; then
   echo " (i) Version Name: ${version_name}"
 fi
