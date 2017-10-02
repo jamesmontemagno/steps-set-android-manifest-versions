@@ -8,6 +8,7 @@ app:
   # define these in your .bitrise.secrets.yml
   - my_manifest_path: $my_manifest_path
   - my_version_name: "1.0.43"
+  - my_append_version_name: "yes"
 
 workflows:
   test:
@@ -30,6 +31,7 @@ workflows:
         - version_code: ${BITRISE_BUILD_NUMBER}
         - version_name: ${my_version_name}
         - version_code_offset: ${my_version_code_offset}
+        - append_version_name: ${my_append_version_name}
  
   # ----------------------------------------------------------------
   # --- workflows to Share this step into a Step Library
@@ -38,7 +40,7 @@ workflows:
       # if you want to share this step into a StepLib
       - MY_STEPLIB_REPO_FORK_GIT_URL: https://github.com/jamesmontemagno/bitrise-steplib
       - STEP_ID_IN_STEPLIB: set-android-manifest-versions
-      - STEP_GIT_VERION_TAG_TO_SHARE: 1.0.5
+      - STEP_GIT_VERION_TAG_TO_SHARE: 1.0.6
       - STEP_GIT_CLONE_URL: https://github.com/jamesmontemagno/steps-set-android-manifest-versions.git
     description: |-
       If this is the first time you try to share a Step you should
